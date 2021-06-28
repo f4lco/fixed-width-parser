@@ -20,7 +20,7 @@ public class FixedFieldGaplessChecker implements ModelInspector, FinalTypeFinder
 
         if (!fields.isEmpty()) {
             FixedField first = fields.get(0);
-            if (first.start() >= 0) {
+            if (first.start() > 0) {
                 entries.add(createWarningForFirstEntry(model, fieldsByName.get(first), first));
             }
         }
