@@ -8,6 +8,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.function.Supplier;
+import java.util.regex.Matcher;
 
 /**
  * @author Giao Ho
@@ -195,7 +196,7 @@ public class CommonUtil {
     public String formatMessage(String value, Map<String, Supplier<String>> arguments) {
         if (arguments != null) {
             for (String key : arguments.keySet())
-                value = replaceAll(value, key, arguments.get(key));
+                value = replaceAll(value, key, () -> Matcher.quoteReplacement(arguments.get(key).get()));
         }
         return value;
     }
